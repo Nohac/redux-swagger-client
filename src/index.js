@@ -1,3 +1,5 @@
+import Swagger from 'swagger-client'
+
 export default swagger = (opts) => store => next => {
   var waitQueue = []
   var ready = false

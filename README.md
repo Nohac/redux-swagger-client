@@ -4,7 +4,7 @@ Redux Swagger Client
 Swagger middleware for redux
 
 ## About
-This is a attempt to add asyncronus swagger api calls to redux. It works by dispatching an action that includes the field `swagger` that takes a function and passes the swagger client element to that function. If the swagger spec has not yet ben parsed, the action will get cued.
+This is an attempt to add asyncronus swagger api calls to redux. It works by dispatching an action that includes the field `swagger` that takes a function and passes the swagger client element to that function. If the swagger spec has not yet been parsed, the action will get queued.
 
 ## Installation
 
