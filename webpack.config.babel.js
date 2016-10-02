@@ -10,7 +10,7 @@ const plugins = [
   }),
 ];
 
-const filename = `redux-swagger-client{NODE_ENV === 'production' ? '.min' : ''}.js`;
+const filename = `redux-swagger-client${NODE_ENV === 'production' ? '.min' : ''}.js`;
 
 NODE_ENV === 'production'  && plugins.push(
   new webpack.optimize.UglifyJsPlugin({

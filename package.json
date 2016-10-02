@@ -15,10 +15,6 @@
   "scripts": {
     "clean": "rimraf lib dist es",
     "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min && npm run build:es",
-    "prepublish": "npm run clean && npm run test && npm run build",
-    "posttest": "npm run lint",
-    "lint": "eslint src test",
-    "test": "cross-env BABEL_ENV=commonjs mocha --compilers js:babel-core/register --reporter spec test/*.js",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack",
