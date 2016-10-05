@@ -1,6 +1,6 @@
 {
   "name": "redux-swagger-client",
-  "version": "2.1.0",
+  "version": "1.0.0",
   "description": "Swagger middleware for Redux.",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
@@ -24,7 +24,7 @@
     "type": "git",
     "url": "https://github.com/noh4ck/redux-swagger-client.git"
   },
-  "homepage": "https://github.com/noh4ck/redux-swagger-client.git",
+  "homepage": "https://github.com/noh4ck/redux-swagger-client",
   "keywords": [
     "redux",
     "swagger",
@@ -34,6 +34,9 @@
   ],
   "author": "Jonas Rudlang <jonas.rudlang@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "swagger-client": "^2.1.22"
+  },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.6.5",
@@ -68,7 +71,6 @@
     "mocha": "^2.2.5",
     "redux": "^3.4.0",
     "rimraf": "^2.5.2",
-    "swagger-client": "^2.1.22",
     "typescript": "^1.8.10",
     "typescript-definition-tester": "0.0.4",
     "webpack": "^1.12.14"
