@@ -8,40 +8,51 @@ This is an attempt to add asynchronous swagger api calls to redux. It works by d
 
 ## Installation
 note: This module requires [redux-thunk](https://github.com/gaearon/redux-thunk)
+Github:
+```
+npm install --save github:noh4ck/redux-swagger-client
+```
 
+Package pending:
 ```
 npm install --save redux-swagger-client
 ```
 
-Then, to enable Redux Swagger-client, use [`applyMiddleware()`](http://redux.js.org/docs/api/applyMiddleware.html):
+To enable Redux Swagger-client, use [`applyMiddleware()`](http://redux.js.org/docs/api/applyMiddleware.html):
 
 ```js
-import { createStore, applyMiddleware } from 'redux';
-import swaggerClient from 'redux-swagger-client';
-import rootReducer from './reducers/index';
+import { createStore, applyMiddleware } from 'redux'
+import swaggerClient from 'redux-swagger-client'
+import thunk from 'redux-thunk'
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(swaggerClient({url:'http://petstore.swagger.io/v2/swagger.json'})
+  applyMiddleware([
+    thunk,
+    swaggerClient({url:'http://petstore.swagger.io/v2/swagger.json'})
+  ])
 );
 ```
 
 ## Usage
 ```js
-function fetchPets() {
-  return (dispatch) => {
-    dispatch({ 
-      type: "FETCH_PETS",
-      swagger: (s) => {
-        s.pet.findPetsByStatus({status: 'available'}, 
-          (pets) => { dispatch({
-            type: "FETCH_PETS_SUCCESS",
-            payload: pets
-          })}
-        )
-      }
-    })
-  }
+var fetchPets = () => (dsp) => {
+  dsp({ 
+    type: "FETCH_PETS",
+    swagger: (api) => {
+      api.pet.findPetsByStatus(
+        {status: 'available'}, 
+        (pets) => dsp({
+          type: "FETCH_PETS_SUCCESS",
+          payload: pets
+        }),
+        (error) => dsp({
+          type: "FETCH_PETS_FAILED",
+          payload: error
+        })
+      )
+    }
+  })
 }
 
 store.dispatch(fetchPets())
