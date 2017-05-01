@@ -36,23 +36,11 @@ const store = createStore(
 
 ## Usage
 ```js
-var fetchPets = () => (dsp) => {
-  dsp({ 
-    type: "FETCH_PETS",
-    swagger: (api) => {
-      api.pet.findPetsByStatus(
-        {status: 'available'}, 
-        (pets) => dsp({
-          type: "FETCH_PETS_SUCCESS",
-          payload: pets
-        }),
-        (error) => dsp({
-          type: "FETCH_PETS_FAILED",
-          payload: error
-        })
-      )
-    }
-  })
+function fetchPet() {
+  return { 
+    types: ["FETCH_PETS", "FETCH_PETS_SUCCESS", "FETCH_PETS_FAILED"],
+    swagger: api => api.pet.findPetsByStatus({status: 'available'})
+  }
 }
 
 store.dispatch(fetchPets())
