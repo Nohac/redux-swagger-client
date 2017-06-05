@@ -12,7 +12,7 @@ const plugins = [
 
 const filename = `redux-swagger-client${NODE_ENV === 'production' ? '.min' : ''}.js`;
 
-NODE_ENV === 'production'  && plugins.push(
+NODE_ENV === 'production' && plugins.push(
   new webpack.optimize.UglifyJsPlugin({
     compressor: {
       pure_getters: true,
@@ -32,7 +32,7 @@ export default {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets:[ 'stage-2' ]
+          presets:[ 'stage-2', 'es2015' ]
         }
       }
     ]
