@@ -35,7 +35,7 @@
   "author": "Jonas Rudlang <jonas.rudlang@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "swagger-client": "^2.1.22"
+    "swagger-client": "^3.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
