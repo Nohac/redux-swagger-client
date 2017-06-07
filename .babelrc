@@ -3,6 +3,7 @@
     ["transform-es2015-template-literals", { "loose": true }],
     "transform-es2015-literals",
     "transform-es2015-function-name",
+    "transform-async-to-generator",
     "transform-es2015-arrow-functions",
     "transform-es2015-block-scoped-functions",
     ["transform-es2015-classes", { "loose": true }],
@@ -18,14 +19,14 @@
     ["transform-es2015-destructuring", { "loose": true }],
     "transform-es2015-block-scoping",
     "transform-es3-member-expression-literals",
-    "transform-es3-property-literals",
+    "transform-es3-property-literals"
   ],
-  presets: ["stage-2"],
+  "presets": ["stage-2", "es2015"],
   "env": {
     "commonjs": {
       "plugins": [
-        ["transform-es2015-modules-commonjs", { "loose": true }],
+        ["transform-es2015-modules-commonjs", { "loose": true }]
       ]
-    },
+    }
   }
 }
