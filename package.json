@@ -2,7 +2,7 @@
   "name": "redux-swagger-client",
   "version": "1.0.0",
   "description": "Swagger middleware for Redux.",
-  "main": "dist/index.js",
+  "main": "dist/redux-swagger-client.min.js",
   "jsnext:main": "es/index.js",
   "typings": "./index.d.ts",
   "files": [
