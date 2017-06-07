@@ -10,9 +10,9 @@ const plugins = [
   }),
 ];
 
-const filename = `redux-swagger-client${NODE_ENV === 'production' ? '.min' : ''}.js`;
+const filename = `redux-swagger-client${NODE_ENV !== 'development' ? '.min' : ''}.js`;
 
-NODE_ENV === 'production' && plugins.push(
+NODE_ENV !== 'development' && plugins.push(
   new webpack.optimize.UglifyJsPlugin({
     compressor: {
       pure_getters: true,
@@ -32,10 +32,10 @@ export default {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets:[ 'stage-2', 'es2015' ]
-        }
-      }
-    ]
+          presets: ['stage-2', 'es2015'],
+        },
+      },
+    ],
   },
     // module: {
     //   loaders: [
@@ -43,16 +43,16 @@ export default {
     //   ],
     // },
 
-    entry: [
-      './src/index',
-    ],
+  entry: [
+    './src/index',
+  ],
 
-    output: {
-      path: path.join(__dirname, 'dist'),
-        filename,
-        library: 'ReduxSwaggerClient',
-        libraryTarget: 'umd',
-    },
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename,
+    library: 'ReduxSwaggerClient',
+    libraryTarget: 'umd',
+  },
 
-    plugins,
+  plugins,
 };
