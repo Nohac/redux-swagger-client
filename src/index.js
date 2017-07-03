@@ -24,21 +24,30 @@ export default function swaggerMiddleware(opts) {
       }
     })
       .then(result => {
-        const { swagger, types, ...rest } = action;
-        const [REQUEST, SUCCESS, FAILURE] = types;
+        const { swagger, types, actions, ...rest } = action;
+        const [REQUEST, SUCCESS, FAILURE] = actions || types;
         const callApi = async (apis, sw) => {
           if (typeof sw !== 'function') {
             const error = new Error('Swagger api call is not a function');
             opts.error && opts.error(error);
             throw error;
           }
-          next({ ...rest, type: REQUEST });
+          if(typeof REQUEST === 'function') next(REQUEST(rest));
+          else if(REQUEST) next({ ...rest, type: REQUEST });
           !!opts.preRequest && await opts.preRequest(action);
           try {
             const resp = await sw(apis, action);
-            return next({ ...rest, result: resp, type: SUCCESS });
+            if(typeof SUCCESS === 'function') {
+              return next(SUCCESS({...rest, result: resp}));
+            } else if(SUCCESS !== undefined) {
+           	  return next({ ...rest, result: resp, type: SUCCESS });
+            }
           } catch (error) {
-            return next({ ...rest, error, type: FAILURE });
+            if(typeof FAILURE === 'function') {
+              return next(FAILURE({...rest, error}));
+            } else if(FAILURE !== undefined) {
+              return next({ ...rest, error, type: FAILURE });
+            }
           }
         };
 

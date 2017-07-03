@@ -45,3 +45,39 @@ function fetchPet() {
 
 store.dispatch(fetchPets())
 ```
+
+Note, it's also possible to dispatch functions:
+
+```js
+
+function fetchPets_request(json) {
+  return {
+    type: 'FETCH_PETS',
+    receivedAt: Date.now()
+  }
+}
+function fetchPets_success(json) {
+  return {
+    type: 'FETCH_PETS_SUCCESS',
+    pets: json.result.body,
+    receivedAt: Date.now()
+  }
+}
+function fetchPets_failure(json) {
+  return {
+    type: 'FETCH_PETS_FAILED',
+    pets: null,
+    error,
+    receivedAt: Date.now()
+  }
+}
+
+function fetchPet() {
+  return {
+    actions: [fetchPets_request, fetchPets_success, fetchPets_failure],
+    swagger: api => api.pet.findPetsByStatus({status: 'available'})
+  }
+}
+
+store.dispatch(fetchPets())
+```
