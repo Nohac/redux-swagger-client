@@ -1,6 +1,6 @@
 {
   "name": "redux-swagger-client",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Swagger middleware for Redux.",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
