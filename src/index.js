@@ -14,12 +14,12 @@ export default function swaggerMiddleware(opts) {
       ...opts,
       requestInterceptor(req) {
         return !!opts.requestInterceptor
-          ? opts.requestInterceptor(req, action)
+          ? opts.requestInterceptor(req, action, dispatch, getState)
           : req;
       },
       responseInterceptor(resp) {
         return !!opts.responseInterceptor
-          ? opts.responseInterceptor(resp, action)
+          ? opts.responseInterceptor(resp, action, dispatch, getState)
           : resp;
       }
     })
