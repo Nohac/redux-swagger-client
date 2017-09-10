@@ -1,17 +1,11 @@
 {
   "name": "redux-swagger-client",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Swagger middleware for Redux.",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
   "typings": "./index.d.ts",
-  "files": [
-    "lib",
-    "es",
-    "src",
-    "dist",
-    "index.d.ts"
-  ],
+  "files": ["lib", "es", "src", "dist", "index.d.ts"],
   "scripts": {
     "clean": "rimraf lib dist es",
     "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min && npm run build:es",
@@ -25,13 +19,7 @@
     "url": "https://github.com/noh4ck/redux-swagger-client.git"
   },
   "homepage": "https://github.com/noh4ck/redux-swagger-client",
-  "keywords": [
-    "redux",
-    "swagger",
-    "middleware",
-    "redux-middleware",
-    "flux"
-  ],
+  "keywords": ["redux", "swagger", "middleware", "redux-middleware", "flux"],
   "author": "Jonas Rudlang <jonas.rudlang@gmail.com>",
   "license": "MIT",
   "dependencies": {
